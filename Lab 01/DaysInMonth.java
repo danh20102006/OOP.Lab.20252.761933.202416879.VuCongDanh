@@ -11,7 +11,6 @@ public class DaysInMonth {
             System.out.print("Enter month: ");
             String input = sc.nextLine().trim().toLowerCase();
 
-            // 🔥 loại bỏ dấu chấm
             input = input.replace(".", "");
 
             month = getMonth(input);
