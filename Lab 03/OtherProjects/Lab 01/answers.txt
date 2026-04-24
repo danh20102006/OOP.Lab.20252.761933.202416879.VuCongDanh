@@ -1,0 +1,8 @@
+6.1:
+1. Khi người dùng chọn “Cancel”, hàm sẽ trả về JOptionPane.CANCEL_OPTION (giá trị 2). Trong code chỉ có:
+(option == JOptionPane.YES_OPTION ? "Yes" : "No")
+Tức là:
+Nếu là YES → in "Yes"
+Còn lại (tất cả các trường hợp khác) → in "No"
+Nên nếu người dùng chọn "Cancel" chương trình sẽ in "No".
+2. Có thể tùy chỉnh các lựa chọn bằng cách sử dụng JOptionPane.showOptionDialog() và truyền vào một mảng chứa các nhãn tùy chọn (ví dụ: “I do”, “I don’t”) thay vì dùng mặc định “Yes/No”.

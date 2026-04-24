@@ -1,0 +1,22 @@
+1. Investigation on Java's Parameter Passing (Swap method)
+Question: Why does the swap(Object o1, Object o2) method not work?
+Answer: * Trong Java, tham số luôn được truyền theo kiểu truyền giá trị (pass-by-value).
+Khi truyền một đối tượng vào hàm, cái được truyền đi thực chất là bản sao của địa chỉ ô nhớ (reference) trỏ đến đối tượng đó.
+Hàm swap này chỉ thực hiện tráo đổi hai cái "bản sao địa chỉ" cục bộ bên trong hàm. Các biến gốc ở hàm main vẫn trỏ y nguyên vào các đối tượng ban đầu, nên kết quả không hề thay đổi.
+
+Question: How to write a real swap method?
+Answer:
+Để thực sự đổi chỗ hai đối tượng DigitalVideoDisc, chúng ta không thể đổi chỗ các địa chỉ trực tiếp.
+Thay vào đó, ta phải tráo đổi giá trị của các thuộc tính bên trong chúng (như title, category, cost...) bằng cách dùng các hàm setter/getter, hoặc bọc các đối tượng này vào một lớp Wrapper hoặc mảng để thao tác trên con trỏ.
+
+2. Memory Management (String vs StringBuilder)
+Question: Comparison between String and StringBuilder/StringBuffer.
+Answer:
+String: Là đối tượng bất biến (immutable). Mỗi khi dùng toán tử + để nối chuỗi, Java sẽ tạo ra một đối tượng String hoàn toàn mới và hủy đối tượng cũ. Trong một vòng lặp lớn (ví dụ 100,000 lần), việc này tạo ra hàng nghìn đối tượng rác trong bộ nhớ Heap, gây tốn RAM và làm chương trình chạy cực kỳ chậm.
+StringBuilder: Là đối tượng có thể thay đổi (mutable). Nó cho phép sửa đổi nội dung trực tiếp trên cùng một vùng nhớ mà không cần tạo mới đối tượng. Vì vậy, StringBuilder nhanh hơn rất nhiều và tối ưu bộ nhớ hơn hẳn khi cần xử lý chuỗi lớn.
+
+3. Class Members vs Instance Members
+Question: What is the purpose of static keyword in nbDigitalVideoDiscs?
+Answer:
+Từ khóa static biến biến này thành một thành viên của lớp (class member), nghĩa là nó được dùng chung cho tất cả các đối tượng được tạo ra từ lớp đó.
+Điều này giúp chương trình duy trì một bộ đếm chung để theo dõi tổng số lượng DVD đã tạo, từ đó tự động gán ID tăng dần (unique ID) cho mỗi đối tượng mới một cách chính xác.
